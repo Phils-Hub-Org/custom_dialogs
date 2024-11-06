@@ -1,13 +1,5 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QDialog, QButtonGroup
-
-### ---/--/--- (Only for testing. Required for importing the resources when this file == __main__) ---/--/--- ###
-import os, sys
-proj_root = os.getcwd()
-if proj_root not in sys.path:
-    sys.path.insert(0, proj_root)
-### ---/--/--- (Only for testing) ---/--/--- ###
-
 from Resources.UI.ui_options_message_box import Ui_OptionsMessageBox
 
 class OptionsMessageBox(QDialog):
@@ -60,12 +52,3 @@ def displayOptionsMessageBox(message: str, options: list) -> str | None:
 
     # Retrieve and return the result from the dialog
     return msgBox.getResult()
-
-if __name__ == '__main__':
-    from PySide6.QtWidgets import QApplication
-    app = QApplication([])
-
-    result = displayOptionsMessageBox("Options Message Box", ["Option 1", "Option 2", "Option 3"])
-    print("Selected Option:", result)
-
-    app.exec()
