@@ -17,6 +17,7 @@ class InputMessageBox(QDialog):
 
         # Connect the submit button to handle submission and dialog closure
         self.ui.submit_btn.clicked.connect(self.onSubmit)
+        self.ui.cancel_btn.clicked.connect(self.onCancel)
 
     def setText(self, text: str):
         self.ui.msg_label.setText(text)
@@ -25,6 +26,10 @@ class InputMessageBox(QDialog):
         # Store the input text if provided, or keep None if empty
         text_input = self.ui.input_field.text().strip()
         self.result = text_input if text_input else None
+        self.close()
+    
+    def onCancel(self):
+        self.result = None
         self.close()
 
     def getResult(self):
